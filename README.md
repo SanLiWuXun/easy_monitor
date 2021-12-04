@@ -1,4 +1,4 @@
-# easy_monitor -Version0.1-
+# easy_monitor -Version0.2-
 
 This is a simple project for monitoring variables changes, such as loss chages with time in Neural Network training. 
 
@@ -25,6 +25,10 @@ Using this module to show variable changes is very easy, firstly you should impo
 Then, before use it, you must instantiated an easy_monitor object, one example is shown below:
 
 ![v0.1_example.jpg](https://i.loli.net/2021/11/13/g652rzS3xRGwsdB.jpg)
+
+If you don't need the figure title and plot label, you can directly use the follow code to instantiated it:
+
+![新实例化-自动区间.jpg](https://s2.loli.net/2021/12/04/jHxI1LNCZsBvzqk.jpg)
 
 When you get a new pair data you want to monitor, such as at n epoch, the average loss is n_epoch_loss, then all you need to do to realize the monitor is:
 

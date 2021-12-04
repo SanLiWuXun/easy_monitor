@@ -4,7 +4,7 @@ import math
 
 
 class easy_monitor():
-    def __init__(self, figure_title, plotlabel, frame_pause_time=0.01, xlabel="X-axis", ylabel="Y-axis",
+    def __init__(self, figure_title=None, plotlabel=None, frame_pause_time=0.01, xlabel="X-axis", ylabel="Y-axis",
                  linestyle='b-', linewidth=2.0, xlim_lower=None, xlim_upper=None,
                  ylim_lower=None, ylim_upper=None, margin_factor=100, xticks_num=11, yticks_num=11,
                  lengend_loc="upper left", x_log=False, y_log=False):
@@ -33,15 +33,16 @@ class easy_monitor():
         self.lengend_loc = lengend_loc
         self.x_log = x_log
         self.y_log = y_log
-        self.xlabel = 'log('+ xlabel +')' if self.x_log else xlabel
-        self.ylabel = 'log('+ ylabel +')' if self.y_log else ylabel
+        self.xlabel = 'log(' + xlabel + ')' if self.x_log else xlabel
+        self.ylabel = 'log(' + ylabel + ')' if self.y_log else ylabel
 
     def ani_plot(self, xx, yy):
         # 清除原有图像
         plt.cla()
 
         # 设定标题等
-        plt.title(self.figure_title)
+        if self.figure_title != 0:
+            plt.title(self.figure_title)
         plt.grid(True)
 
         if self.x_log:
@@ -97,7 +98,8 @@ class easy_monitor():
         plt.plot(self.x_list, self.y_list, self.linestyle, linewidth=self.linewidth, label=self.plotlabel)
 
         # 设置图例位置,loc可以为[upper, lower, left, right, center]
-        plt.legend(loc=self.lengend_loc, shadow=True)
+        if self.plotlabel != None:
+            plt.legend(loc=self.lengend_loc, shadow=True)
 
         # 暂停
         plt.pause(self.frame_pause_time)
